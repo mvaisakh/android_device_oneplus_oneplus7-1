@@ -78,7 +78,12 @@ function configure_automotive_sku_parameters() {
     echo 1056000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
     echo 1171200 > /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq
     echo 1785600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-
+    echo 902400000  > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/min_freq
+    echo 902400000  > /sys/class/devfreq/soc\:qcom,cpu4-cpu-l3-lat/min_freq
+    echo 902400000  > /sys/class/devfreq/soc\:qcom,cpu7-cpu-l3-lat/min_freq
+    echo 1612800000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/max_freq
+    echo 1612800000 > /sys/class/devfreq/soc\:qcom,cpu4-cpu-l3-lat/max_freq
+    echo 1612800000 > /sys/class/devfreq/soc\:qcom,cpu7-cpu-l3-lat/max_freq
 #read feature id from nvram
 reg_val=`cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4`
 feature_id=$(((reg_val >> 20) & 0xFF))
@@ -3560,8 +3565,7 @@ case "$target" in
         # Set Memory parameters
         configure_memory_parameters
 
-        rev=`cat /sys/devices/soc0/revision`
-        if [ $rev == "2.0" ] || [ $rev == "2.0.2" ]; then
+        if [ `cat /sys/devices/soc0/revision` == "2.0" ]; then
              # r2.0 related changes
              echo "0:1075200" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
              echo 610000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/rtg_boost_freq
