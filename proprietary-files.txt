@@ -1,0 +1,3 @@
+-priv-app/OnePlusCamera/OnePlusCamera.apk
+-priv-app/OnePlusCameraService/OnePlusCameraService.apk
+-priv-app/OnePlusGallery/OnePlusGallery.apk

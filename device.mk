@@ -21,7 +21,11 @@ PRODUCT_SHIPPING_API_LEVEL := 29
 endif
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/oneplus/oneplus7pro/oneplus7pro-vendor.mk)
+$(call inherit-product-if-exists, vendor/oneplus/oneplus7/oneplus7-vendor.mk)
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-oem-system.xml:system/etc/permissions/privapp-permissions-oem-system.xml
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
