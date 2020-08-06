@@ -23,6 +23,6 @@ export DEVICE=oneplus7
 export DEVICE_COMMON=sm8150-common
 export VENDOR=oneplus
 
-export DEVICE_BRINGUP_YEAR=2019
+export DEVICE_BRINGUP_YEAR=2020
 
 "./../../${VENDOR}/${DEVICE_COMMON}/setup-makefiles.sh" "$@"
