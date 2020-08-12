@@ -177,31 +177,6 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 # Audio configuration file
 -include $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/msmnile/msmnile.mk
 
-#Audio DLKM
-AUDIO_DLKM := audio_apr.ko
-AUDIO_DLKM += audio_wglink.ko
-AUDIO_DLKM += audio_q6_pdr.ko
-AUDIO_DLKM += audio_q6_notifier.ko
-AUDIO_DLKM += audio_adsp_loader.ko
-AUDIO_DLKM += audio_q6.ko
-AUDIO_DLKM += audio_usf.ko
-AUDIO_DLKM += audio_pinctrl_wcd.ko
-AUDIO_DLKM += audio_swr.ko
-AUDIO_DLKM += audio_wcd_core.ko
-AUDIO_DLKM += audio_swr_ctrl.ko
-AUDIO_DLKM += audio_wsa881x.ko
-AUDIO_DLKM += audio_platform.ko
-AUDIO_DLKM += audio_hdmi.ko
-AUDIO_DLKM += audio_stub.ko
-AUDIO_DLKM += audio_wcd9xxx.ko
-AUDIO_DLKM += audio_mbhc.ko
-AUDIO_DLKM += audio_wcd9360.ko
-AUDIO_DLKM += audio_wcd_spi.ko
-AUDIO_DLKM += audio_native.ko
-AUDIO_DLKM += audio_machine_msmnile.ko
-AUDIO_DLKM += audio_wcd934x.ko
-PRODUCT_PACKAGES += $(AUDIO_DLKM)
-
 PRODUCT_PACKAGES += fs_config_files
 
 #A/B related packages
