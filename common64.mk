@@ -12,10 +12,10 @@ PRODUCT_MANUFACTURER := OnePlus
 
 # whitelisted app
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus7/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+    device/oneplus/oneplus7/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus7/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
+    device/oneplus/oneplus7/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
@@ -23,4 +23,4 @@ PRODUCT_COPY_FILES += \
 # Permission for Wi-Fi passpoint support
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml
 
-PRODUCT_PRIVATE_KEY := device/oneplus/oneplus7/qcom.key
+PRODUCT_PRIVATE_KEY := device/oneplus/oneplus7/configs/qcom.key

@@ -180,9 +180,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml \
 
-DEVICE_MANIFEST_FILE := device/oneplus/oneplus7/manifest.xml
-DEVICE_MATRIX_FILE   := device/oneplus/oneplus7/compatibility_matrix.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/oneplus/oneplus7/framework_manifest.xml
+DEVICE_MANIFEST_FILE := device/oneplus/oneplus7/configs/manifest.xml
+DEVICE_MATRIX_FILE   := device/oneplus/oneplus7/configs/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/oneplus/oneplus7/configs/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
 
 #audio related module
@@ -194,10 +194,10 @@ PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
 
 # MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += device/oneplus/oneplus7/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+PRODUCT_COPY_FILES += device/oneplus/oneplus7/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # Powerhint configuration file
-PRODUCT_COPY_FILES += device/oneplus/oneplus7/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+PRODUCT_COPY_FILES += device/oneplus/oneplus7/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 
 # Vibrator
@@ -237,7 +237,7 @@ PRODUCT_PACKAGES += \
 
 # Sensor conf files
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus7/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
+    device/oneplus/oneplus7/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
@@ -256,7 +256,7 @@ PRODUCT_COPY_FILES += \
 
 #Exclude vibrator from InputManager
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus7/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+    device/oneplus/oneplus7/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
 #Enable full treble flag
 PRODUCT_FULL_TREBLE_OVERRIDE := true
@@ -283,7 +283,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ro.crypto.volume.filenames_mode = "aes-256-cts" \
 ro.crypto.allow_encrypt_override = true
 
-PRODUCT_COPY_FILES += device/oneplus/oneplus7/manifest-qva.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
+PRODUCT_COPY_FILES += device/oneplus/oneplus7/configs/manifest-qva.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
 
 # Target specific Netflix custom property
 PRODUCT_PROPERTY_OVERRIDES += \
