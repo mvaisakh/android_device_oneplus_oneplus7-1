@@ -17,11 +17,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus7/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
 
-# Ipsec_tunnels feature
-ifneq ($(TARGET_KERNEL_VERSION), 3.18)
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
-endif
 
 # Permission for Wi-Fi passpoint support
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml

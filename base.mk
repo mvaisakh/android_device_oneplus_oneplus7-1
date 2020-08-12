@@ -1,12 +1,4 @@
-# define flag to determine the kernel
-TARGET_KERNEL_VERSION := $(shell ls kernel | grep "msm-*" | sed 's/msm-//')
-
-# Set TARGET_USES_NEW_ION for 4.14 and higher kernels
-ifeq ($(TARGET_KERNEL_VERSION),$(filter $(TARGET_KERNEL_VERSION),3.18 4.4 4.9))
-TARGET_USES_NEW_ION := false
-else
 TARGET_USES_NEW_ION := true
-endif
 
 # Board platforms lists to be used for
 # TARGET_BOARD_PLATFORM specific featurization
@@ -14,9 +6,6 @@ QCOM_BOARD_PLATFORMS += msmnile
 
 TARGET_USE_VENDOR_CAMERA_EXT := true
 TARGET_USE_QTI_BT_STACK := true
-
-BOARD_HAVE_QCOM_FM ?= true
-
 
 # Boot additions
 ifeq ($(strip $(TARGET_USES_NQ_NFC)),true)
@@ -488,12 +477,10 @@ FSTMAN += fstman.ini
 #FD_LEAK
 FD_LEAK := libc_leak_detector
 
-ifneq ($(BOARD_HAVE_BLUETOOTH),false)
 PRODUCT_PACKAGES += \
     Bluetooth \
     BluetoothExt \
     BATestApp
-endif
 
 PRODUCT_PACKAGES += $(ALSA_HARDWARE)
 PRODUCT_PACKAGES += $(ALSA_UCM)
@@ -509,9 +496,7 @@ PRODUCT_PACKAGES += $(AMPLOADER)
 PRODUCT_PACKAGES += $(APPS)
 PRODUCT_PACKAGES += $(BRCTL)
 PRODUCT_PACKAGES += $(BSON)
-ifneq ($(BOARD_HAVE_BLUETOOTH),false)
 PRODUCT_PACKAGES += $(BT)
-endif
 PRODUCT_PACKAGES += $(C2DCC)
 PRODUCT_PACKAGES += $(CHROMIUM)
 PRODUCT_PACKAGES += $(CIMAX)
@@ -568,11 +553,6 @@ PRODUCT_PACKAGES += $(MM_VIDEO)
 ifeq ($(strip $(TARGET_USES_NQ_NFC)),true)
 PRODUCT_PACKAGES += $(NQ_NFC)
 endif
-ifeq ($(strip $(BOARD_HAVE_QCOM_FM)),true)
-# system prop for fm
-PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.hw.fm.init=0
-endif #BOARD_HAVE_QCOM_FM
 PRODUCT_PACKAGES += $(OPENCORE)
 PRODUCT_PACKAGES += $(PPP)
 PRODUCT_PACKAGES += $(PROTOBUF)
@@ -607,13 +587,8 @@ PRODUCT_PACKAGES += android.hardware.drm@1.1-service.widevine
 PRODUCT_PACKAGES += android.hardware.drm@1.1-service.clearkey
 
 # Don't use dynamic DRM HAL for non-go SPs
-ifneq ($(TARGET_HAS_LOW_RAM),true)
 PRODUCT_PACKAGES += android.hardware.drm@1.2-service.widevine
 PRODUCT_PACKAGES += android.hardware.drm@1.2-service.clearkey
-else
-PRODUCT_PACKAGES += android.hardware.drm@1.2-service-lazy.widevine
-PRODUCT_PACKAGES += android.hardware.drm@1.2-service-lazy.clearkey
-endif
 
 ifeq ($(strip $(OTA_FLAG_FOR_DRM)),true)
 PRODUCT_PACKAGES += move_widevine_data.sh
@@ -638,8 +613,6 @@ PRODUCT_PACKAGES += tcmiface
 PRODUCT_PACKAGES += libhealthd.msm
 
 #NANOPB_LIBRARY_NAME := libnanopb-c-2.8.0
-
-PRODUCT_PACKAGES_DEBUG += $(TELEPHONY_DBG)
 
 PRODUCT_COPY_FILES := \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -703,31 +676,15 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Copy the vulkan feature level file.
-# Targets listed in VULKAN_FEATURE_LEVEL_0_TARGETS_LIST supports only vulkan feature level 0.
-ifneq ($(TARGET_NOT_SUPPORT_VULKAN),true)
-ifeq ($(call is-product-in-list,$(VULKAN_FEATURE_LEVEL_0_TARGETS_LIST)), true)
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-0.xml
-else
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-1.xml
-endif
-endif
 
-ifneq ($(TARGET_NOT_SUPPORT_VULKAN),true)
-ifeq ($(TARGET_SUPPORT_VULKAN_VERSION_1_1),false)
-PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_0_3.xml
-else
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml
-endif
-endif
 
-ifneq ($(strip $(TARGET_USES_RRO)),true)
 # enable overlays to use our version of
 # source/resources etc.
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus7/device/overlay
 PRODUCT_PACKAGE_OVERLAYS += device/oneplus/oneplus7/product/overlay
-endif
 
 # dm-verity definitions
 ifneq ($(BOARD_AVB_ENABLE), true)
@@ -736,14 +693,6 @@ ifneq ($(BOARD_AVB_ENABLE), true)
       PRODUCT_VENDOR_VERITY_PARTITION=/dev/block/bootdevice/by-name/vendor
    endif
    $(call inherit-product, build/target/product/verity.mk)
-endif
-
-# OEM Unlock reporting
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.oem_unlock_supported=1
-
-ifeq ($(TARGET_USES_QCOM_BSP_ATEL),true)
-    PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
 endif
 
 PRODUCT_PACKAGES += liboemaids_system

@@ -2,18 +2,16 @@
 ####
 #### Turning BOARD_DYNAMIC_PARTITION_ENABLE flag to TRUE will enable dynamic partition/super image creation.
 
-ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),true)
-  # By default this target is new-launch config, so set the default shipping level to 29 (if not set explictly earlier)
-  SHIPPING_API_LEVEL ?= 29
+# By default this target is new-launch config, so set the default shipping level to 29 (if not set explictly earlier)
+SHIPPING_API_LEVEL ?= 29
 
-  # Enable Dynamic partitions only for Q new launch devices.
-  ifeq ($(SHIPPING_API_LEVEL),29)
-    BOARD_DYNAMIC_PARTITION_ENABLE := true
-    PRODUCT_SHIPPING_API_LEVEL := 29
-  else ifeq ($(SHIPPING_API_LEVEL),28)
-    BOARD_DYNAMIC_PARTITION_ENABLE := false
-    $(call inherit-product, build/make/target/product/product_launched_with_p.mk)
-  endif
+# Enable Dynamic partitions only for Q new launch devices.
+ifeq ($(SHIPPING_API_LEVEL),29)
+  BOARD_DYNAMIC_PARTITION_ENABLE := true
+  PRODUCT_SHIPPING_API_LEVEL := 29
+else ifeq ($(SHIPPING_API_LEVEL),28)
+  BOARD_DYNAMIC_PARTITION_ENABLE := false
+  $(call inherit-product, build/make/target/product/product_launched_with_p.mk)
 endif
 
 ifneq ($(strip $(BOARD_DYNAMIC_PARTITION_ENABLE)),true)
@@ -40,14 +38,6 @@ endif
 
 $(call inherit-product, device/oneplus/oneplus7/common64.mk)
 
-# For QSSI builds, we skip building the system image (when value adds are enabled).
-# Instead we build the "non-system" images (that we support).
-
-ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),true)
-PRODUCT_BUILD_SYSTEM_IMAGE := false
-else
-PRODUCT_BUILD_SYSTEM_IMAGE := true
-endif
 PRODUCT_BUILD_SYSTEM_OTHER_IMAGE := false
 PRODUCT_BUILD_VENDOR_IMAGE := true
 PRODUCT_BUILD_PRODUCT_IMAGE := false
@@ -56,12 +46,6 @@ PRODUCT_BUILD_ODM_IMAGE := true
 PRODUCT_BUILD_CACHE_IMAGE := false
 PRODUCT_BUILD_RAMDISK_IMAGE := true
 PRODUCT_BUILD_USERDATA_IMAGE := true
-
-# Also, since we're going to skip building the system image, we also skip
-# building the OTA package. We'll build this at a later step. We also don't
-# need to build the OTA tools package (we'll use the one from the system build).
-TARGET_SKIP_OTA_PACKAGE := true
-TARGET_SKIP_OTATOOLS_PACKAGE := true
 
 # Enable AVB 2.0
 BOARD_AVB_ENABLE := true
@@ -109,9 +93,6 @@ TARGET_USES_QMAA_OVERRIDE_GPS     := false
 #QMAA flags ends
 ###########
 
-# RRO configuration
-TARGET_USES_RRO := true
-
 ###QMAA Indicator Start###
 
 #Full QMAA HAL List
@@ -125,18 +106,6 @@ QMAA_ENABLED_HAL_MODULES :=
 
 ###QMAA Indicator End###
 
-#Default vendor image configuration
-ifeq ($(ENABLE_VENDOR_IMAGE),)
-ENABLE_VENDOR_IMAGE := false
-endif
-ifeq ($(ENABLE_VENDOR_IMAGE), true)
-#Comment on msm8998 tree says that QTIC does not
-# yet support system/vendor split. So disabling it
-# for msmnile as well
-#TARGET_USES_QTIC := false
-#TARGET_USES_QTIC_EXTENSION := false
-
-endif
 TARGET_KERNEL_VERSION := 4.14
 
 #Enable llvm support for kernel
@@ -160,10 +129,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT)/etc/seccomp_policy/codec2.software.ext.policy \
 
 PRODUCT_BOOT_JARS += tcmiface
-
-#ifneq ($(strip $(QCPATH)),)
-#    PRODUCT_BOOT_JARS += WfdCommon
-#endif
 
 PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 
@@ -285,11 +250,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.relative_humidity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.relative_humidity.xml \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.hifi_sensors.xml
 
-
-# Kernel modules install path
-KERNEL_MODULES_INSTALL := dlkm
-KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
-
 #FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml
@@ -303,10 +263,7 @@ PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
-ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus7/overlay
-endif
-
 
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
@@ -326,11 +283,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ro.crypto.volume.filenames_mode = "aes-256-cts" \
 ro.crypto.allow_encrypt_override = true
 
-ifneq ($(GENERIC_ODM_IMAGE),true)
-    PRODUCT_COPY_FILES += device/oneplus/oneplus7/manifest-qva.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
-else
-    PRODUCT_COPY_FILES += device/oneplus/oneplus7/manifest-generic.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
-endif
+PRODUCT_COPY_FILES += device/oneplus/oneplus7/manifest-qva.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
 
 # Target specific Netflix custom property
 PRODUCT_PROPERTY_OVERRIDES += \

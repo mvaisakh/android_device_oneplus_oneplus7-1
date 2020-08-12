@@ -53,9 +53,6 @@ TARGET_2ND_CPU_VARIANT := cortex-a9
 TARGET_HW_DISK_ENCRYPTION := true
 TARGET_HW_DISK_ENCRYPTION_PERF := true
 
-BOARD_SECCOMP_POLICY := device/qcom/$(TARGET_BOARD_PLATFORM)/seccomp
-
-TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 -include vendor/qcom/prebuilt/msmnile/BoardConfigVendor.mk
@@ -177,9 +174,7 @@ TARGET_ENABLE_MEDIADRM_64 := true
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
-ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
-include device/qcom/wlan/msmnile/BoardConfigWlan.mk
-endif
+-include device/qcom/wlan/msmnile/BoardConfigWlan.mk
 
 BUILD_BROKEN_DUP_RULES := true
 
