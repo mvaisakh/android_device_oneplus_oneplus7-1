@@ -38,6 +38,8 @@ endif
 
 #####Dynamic partition Handling
 
+$(call inherit-product, device/oneplus/oneplus7/common64.mk)
+
 # For QSSI builds, we skip building the system image (when value adds are enabled).
 # Instead we build the "non-system" images (that we support).
 
@@ -75,47 +77,11 @@ endif
 
 TARGET_DEFINES_DALVIK_HEAP := true
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-$(call inherit-product, device/qcom/qssi/common64.mk)
-
-#Inherit all except heap growth limit from phone-xhdpi-2048-dalvik-heap.mk
-PRODUCT_PROPERTY_OVERRIDES  += \
-	dalvik.vm.heapstartsize=8m \
-	dalvik.vm.heapsize=512m \
-	dalvik.vm.heaptargetutilization=0.75 \
-	dalvik.vm.heapminfree=512k \
-	dalvik.vm.heapmaxfree=8m
-
-
-PRODUCT_NAME := msmnile
-PRODUCT_DEVICE := msmnile
-PRODUCT_BRAND := qti
-PRODUCT_MODEL := msmnile for arm64
 
 #Initial bringup flags
 TARGET_USES_AOSP := false
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
-
-ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),true)
-  $(warning "Compiling with full value-added framework")
-else
-  $(warning "Compiling without full value-added framework - enabling GENERIC_ODM_IMAGE")
-  GENERIC_ODM_IMAGE := true
-endif
-
-# Enable Codec2.0 HAL as default for pure AOSP variants.
-# WA till ODM properties start taking effect
-ifeq ($(GENERIC_ODM_IMAGE),true)
-  $(warning "Forcing codec2.0 for generic odm build variant")
-  PRODUCT_PROPERTY_OVERRIDES += debug.media.codec2=2
-  PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.ccodec=4
-  PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.omx_default_rank=1000
-else
-  $(warning "Enabling codec2.0 SW only for non-generic odm build variant")
-  #Rank OMX SW codecs lower than OMX HW codecs
-  PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.omx_default_rank.sw-audio=1
-  PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.omx_default_rank=0
-endif
 
 ###########
 #QMAA flags starts
@@ -274,9 +240,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml \
 
-DEVICE_MANIFEST_FILE := device/qcom/msmnile/manifest.xml
-DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/msmnile/framework_manifest.xml
+DEVICE_MANIFEST_FILE := device/oneplus/oneplus7/manifest.xml
+DEVICE_MATRIX_FILE   := device/oneplus/oneplus7/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/oneplus/oneplus7/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
 
 #audio related module
@@ -288,10 +254,10 @@ PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
 
 # MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += device/qcom/msmnile/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+PRODUCT_COPY_FILES += device/oneplus/oneplus7/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # Powerhint configuration file
-PRODUCT_COPY_FILES += device/qcom/msmnile/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+PRODUCT_COPY_FILES += device/oneplus/oneplus7/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 
 # Vibrator
@@ -331,7 +297,7 @@ PRODUCT_PACKAGES += \
 
 # Sensor conf files
 PRODUCT_COPY_FILES += \
-    device/qcom/msmnile/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
+    device/oneplus/oneplus7/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
@@ -355,7 +321,7 @@ PRODUCT_COPY_FILES += \
 
 #Exclude vibrator from InputManager
 PRODUCT_COPY_FILES += \
-    device/qcom/msmnile/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+    device/oneplus/oneplus7/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
 #Enable full treble flag
 PRODUCT_FULL_TREBLE_OVERRIDE := true
@@ -363,7 +329,7 @@ PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 ifneq ($(strip $(TARGET_USES_RRO)),true)
-DEVICE_PACKAGE_OVERLAYS += device/qcom/msmnile/overlay
+DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus7/overlay
 endif
 
 
@@ -386,20 +352,11 @@ ro.crypto.volume.filenames_mode = "aes-256-cts" \
 ro.crypto.allow_encrypt_override = true
 
 ifneq ($(GENERIC_ODM_IMAGE),true)
-    PRODUCT_COPY_FILES += device/qcom/msmnile/manifest-qva.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
+    PRODUCT_COPY_FILES += device/oneplus/oneplus7/manifest-qva.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
 else
-    PRODUCT_COPY_FILES += device/qcom/msmnile/manifest-generic.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
+    PRODUCT_COPY_FILES += device/oneplus/oneplus7/manifest-generic.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
 endif
 
 # Target specific Netflix custom property
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.netflix.bsp_rev=Q855-16947-1
-
-###################################################################################
-# This is the End of target.mk file.
-# Now, Pickup other split product.mk files:
-###################################################################################
-# TODO: Relocate the system product.mk files pickup into qssi lunch, once it is up.
-$(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
-$(call inherit-product-if-exists, vendor/qcom/defs/product-defs/vendor/*.mk)
-###################################################################################
