@@ -7,7 +7,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.early_boot.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.early_boot.sh
+LOCAL_SRC_FILES    := bin/init.qcom.early_boot.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -15,7 +15,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.post_boot.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.post_boot.sh
+LOCAL_SRC_FILES    := bin/init.qcom.post_boot.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -23,7 +23,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.ims.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.ims.sh
+LOCAL_SRC_FILES    := bin/init.qti.ims.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -31,7 +31,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.efs.sync.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.efs.sync.sh
+LOCAL_SRC_FILES    := bin/init.qcom.efs.sync.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -39,7 +39,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.coex.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.coex.sh
+LOCAL_SRC_FILES    := bin/init.qcom.coex.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -47,7 +47,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.sdio.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.sdio.sh
+LOCAL_SRC_FILES    := bin/init.qcom.sdio.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -55,7 +55,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.crda.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.crda.sh
+LOCAL_SRC_FILES    := bin/init.crda.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -87,7 +87,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.sh
+LOCAL_SRC_FILES    := bin/init.qcom.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -95,7 +95,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.class_core.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.class_core.sh
+LOCAL_SRC_FILES    := bin/init.qcom.class_core.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -103,7 +103,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.class_main.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.class_main.sh
+LOCAL_SRC_FILES    := bin/init.class_main.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -127,7 +127,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.usb.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.usb.sh
+LOCAL_SRC_FILES    := bin/init.qcom.usb.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -144,7 +144,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := qca6234-service.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/qca6234-service.sh
+LOCAL_SRC_FILES    := bin/qca6234-service.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -152,7 +152,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.ssr.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.ssr.sh
+LOCAL_SRC_FILES    := bin/init.qcom.ssr.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -160,7 +160,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.mdm.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.mdm.sh
+LOCAL_SRC_FILES    := bin/init.mdm.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -168,7 +168,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.debug.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.debug.sh
+LOCAL_SRC_FILES    := bin/init.qcom.debug.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -176,7 +176,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.debug-sdm660.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.debug-sdm660.sh
+LOCAL_SRC_FILES    := bin/init.qcom.debug-sdm660.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -185,7 +185,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.debug-sdm710.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.debug-sdm710.sh
+LOCAL_SRC_FILES    := bin/init.qcom.debug-sdm710.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -193,7 +193,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-msmnile-apps.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-msmnile-apps.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-msmnile-apps.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -201,7 +201,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-msmnile-modem.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-msmnile-modem.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-msmnile-modem.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -209,7 +209,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-msmnile-slpi.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-msmnile-slpi.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-msmnile-slpi.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -217,7 +217,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-talos.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-talos.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-talos.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -226,7 +226,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-trinket.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-trinket.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-trinket.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -234,7 +234,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-msmnile.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-msmnile.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-msmnile.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -242,7 +242,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-kona.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-kona.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-kona.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -250,7 +250,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-lito.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-lito.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-lito.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -258,7 +258,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-atoll.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-atoll.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-atoll.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -266,7 +266,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-lagoon.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-lagoon.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-lagoon.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -274,7 +274,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-bengal.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-bengal.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-bengal.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -282,7 +282,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.debug-scuba.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.debug-scuba.sh
+LOCAL_SRC_FILES    := bin/init.qti.debug-scuba.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -290,7 +290,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.sensors.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.sensors.sh
+LOCAL_SRC_FILES    := bin/init.qcom.sensors.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -307,7 +307,7 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
     LOCAL_MODULE       := init.qcom.testscripts.sh
     LOCAL_MODULE_TAGS  := optional
     LOCAL_MODULE_CLASS := ETC
-    LOCAL_SRC_FILES    := etc/init.qcom.testscripts.sh
+    LOCAL_SRC_FILES    := bin/init.qcom.testscripts.sh
     include $(BUILD_PREBUILT)
 endif
 
@@ -315,7 +315,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.crashdata.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.crashdata.sh
+LOCAL_SRC_FILES    := bin/init.qcom.crashdata.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -323,6 +323,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.can.sh
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qti.can.sh
+LOCAL_SRC_FILES    := bin/init.qti.can.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
